@@ -2,6 +2,11 @@
   "name": "mls",
   "private": true,
   "packageManager": "pnpm@11.13.1",
+  "devDependencies": {
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
   "scripts": {
     "dev": "pnpm --dir apps/web dev",
     "build": "pnpm --dir apps/web build",
@@ -10,4 +15,3 @@
     "test": "pnpm --dir apps/web test"
   }
 }
-
