@@ -9,3 +9,4 @@ coverage
 .env.local
 .env.production.local
 .env.development.local
+*.tsbuildinfo
