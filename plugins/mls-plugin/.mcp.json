@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mls-plugin": {
+      "command": "pnpm",
+      "args": [
+        "--dir",
+        "/Users/ak/SIR/ai/Systems/website/mls/plugins/mls-plugin",
+        "exec",
+        "tsx",
+        "src/index.ts"
+      ]
+    }
+  }
+}

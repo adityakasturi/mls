@@ -1,0 +1,22 @@
+{
+  "name": "mls-plugin",
+  "version": "0.1.0",
+  "description": "Workflow-focused MLS sync and inspection tools for SimplyRETS-driven listings.",
+  "author": {
+    "name": "Aditya Kasturi"
+  },
+  "interface": {
+    "displayName": "MLS Plugin",
+    "shortDescription": "Search, inspect, and stage MLS listing sync workflows.",
+    "longDescription": "The MLS Plugin wraps the SimplyRETS-driven listing workflow for search, single-listing inspection, and sync orchestration.",
+    "developerName": "Aditya Kasturi",
+    "category": "Productivity",
+    "capabilities": [
+      "MLS listing search",
+      "Single listing inspection",
+      "Featured listing sync queueing"
+    ],
+    "defaultPrompt": "Use the MLS Plugin to search listings, inspect listing data, and stage MLS sync work."
+  },
+  "mcpServers": "./.mcp.json"
+}

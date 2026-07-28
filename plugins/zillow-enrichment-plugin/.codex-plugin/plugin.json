@@ -1,0 +1,22 @@
+{
+  "name": "zillow-enrichment-plugin",
+  "version": "0.1.0",
+  "description": "Quota-aware Zillow enrichment workflow tools backed by Axesso budget controls.",
+  "author": {
+    "name": "Aditya Kasturi"
+  },
+  "interface": {
+    "displayName": "Zillow Enrichment Plugin",
+    "shortDescription": "Match, budget, and stage Zillow enrichment tasks.",
+    "longDescription": "The Zillow Enrichment Plugin wraps Axesso-powered enrichment work with explicit monthly quota controls and property-level staging tools.",
+    "developerName": "Aditya Kasturi",
+    "category": "Productivity",
+    "capabilities": [
+      "Property-to-Zillow matching",
+      "Quota visibility",
+      "Enrichment queue preparation"
+    ],
+    "defaultPrompt": "Use the Zillow Enrichment Plugin to stage and control Zillow enrichment work."
+  },
+  "mcpServers": "./.mcp.json"
+}

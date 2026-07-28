@@ -1,0 +1,16 @@
+packages:
+  - "apps/*"
+  - "plugins/*"
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@modelcontextprotocol/core@2.0.0'
+  - '@modelcontextprotocol/server@2.0.0'
+  - '@supabase/auth-js@2.110.9'
+  - '@supabase/functions-js@2.110.9'
+  - '@supabase/postgrest-js@2.110.9'
+  - '@supabase/realtime-js@2.110.9'
+  - '@supabase/storage-js@2.110.9'
+  - '@supabase/supabase-js@2.110.9'

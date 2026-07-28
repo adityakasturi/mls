@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "zillow-enrichment-plugin": {
+      "command": "pnpm",
+      "args": [
+        "--dir",
+        "/Users/ak/SIR/ai/Systems/website/mls/plugins/zillow-enrichment-plugin",
+        "exec",
+        "tsx",
+        "src/index.ts"
+      ]
+    }
+  }
+}
