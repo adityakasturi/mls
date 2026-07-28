@@ -11,12 +11,5 @@
     "apps/web/src/app/api/admin/enrich/property/[propertyId]/route.ts": {
       "maxDuration": 60
     }
-  },
-  "crons": [
-    {
-      "path": "/api/admin/sync/listings",
-      "schedule": "*/30 * * * *"
-    }
-  ]
+  }
 }
-
