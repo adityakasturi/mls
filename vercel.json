@@ -3,13 +3,5 @@
   "framework": "nextjs",
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm build",
-  "outputDirectory": "apps/web/.next",
-  "functions": {
-    "apps/web/src/app/api/admin/sync/listings/route.ts": {
-      "maxDuration": 60
-    },
-    "apps/web/src/app/api/admin/enrich/property/[propertyId]/route.ts": {
-      "maxDuration": 60
-    }
-  }
+  "outputDirectory": "apps/web/.next"
 }
