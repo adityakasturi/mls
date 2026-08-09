@@ -220,6 +220,7 @@ export function buildWebsiteMarketPulse(
 }
 
 export async function getWebsiteMarketPulse() {
-  const results = await Promise.all(CITIES.map((city) => fetchCity(city)));
+  const results = [];
+  for (const city of CITIES) results.push(await fetchCity(city));
   return buildWebsiteMarketPulse(results);
 }
