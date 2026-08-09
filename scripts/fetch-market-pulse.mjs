@@ -21,8 +21,8 @@ try {
     .join("\n");
   process.stdout.write(`# Eastside Market Pulse
 
-**MLS data through:** ${report.sourceAsOf}  
-**Report checked:** ${report.checkedAt}  
+**MLS data through:** ${report.sourceAsOf}<br>
+**Report checked:** ${report.checkedAt}<br>
 **Coverage:** ${report.listingCount} display-permitted records
 
 | City | Active | New 24h | New 7d | Pending/AUC | Listed <=7d and now pending/AUC | Updated 24h | Active 21+ DOM |
