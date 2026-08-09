@@ -1,23 +1,44 @@
-name: Sync Listings
+name: Eastside Market Pulse
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"
+    # GitHub cron is UTC. These paired hours cover 8am, 2pm, and 8pm Pacific
+    # across daylight-saving changes; the local-time guard skips the extra run.
+    - cron: "0 3,4,15,16,21,22 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: eastside-market-pulse
+  cancel-in-progress: false
 
 jobs:
-  sync:
+  report:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Trigger MLS sync endpoint
-        env:
-          MLS_SYNC_URL: ${{ secrets.MLS_SYNC_URL }}
-          ADMIN_API_TOKEN: ${{ secrets.ADMIN_API_TOKEN }}
+      - uses: actions/checkout@v4
+
+      - name: Confirm Pacific report time
+        id: schedule
+        shell: bash
         run: |
-          if [ -z "$MLS_SYNC_URL" ] || [ -z "$ADMIN_API_TOKEN" ]; then
-            echo "MLS_SYNC_URL and ADMIN_API_TOKEN secrets are required."
-            exit 1
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
-          curl --fail --show-error --silent \
-            --header "x-admin-token: $ADMIN_API_TOKEN" \
-            "$MLS_SYNC_URL"
+          hour="$(TZ=America/Los_Angeles date +%H)"
+          case "$hour" in
+            08|14|20) echo "run=true" >> "$GITHUB_OUTPUT" ;;
+            *) echo "run=false" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Generate aggregate market pulse
+        if: steps.schedule.outputs.run == 'true'
+        env:
+          WEBSITE_MLS_DATA_URL: ${{ secrets.WEBSITE_MLS_DATA_URL }}
+          WEBSITE_MLS_DATA_TOKEN: ${{ secrets.WEBSITE_MLS_DATA_TOKEN }}
+        run: |
+          node scripts/fetch-market-pulse.mjs >> "$GITHUB_STEP_SUMMARY"
